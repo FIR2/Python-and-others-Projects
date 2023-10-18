@@ -1,0 +1,31 @@
+{% extends 'pat_nav.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:2%" align="center">All Doctor</h2><hr></div>
+
+<div class="container" style="width:80%">
+    <div class="row">
+        {% for i in doc %}
+        <div class="col-md-4" align="center" style="width:70%;margin-bottom:4%;">
+            <div style="border:1px solid lightgrey;border-radius:8px;width:300px;padding:17px">
+            <img src="{{i.sign.image.url}}" style="padding:0px;width:130px;height:140px">
+            <h4>{{i.sign.user.first_name}} {{i.sign.user.last_name}}</h4>
+            <p>{{i.specialist}}</p>
+            <p>{{i.address}}</p>
+            <div class="row" style="width:95%">
+                <div class="col-md-6" style="margin:0;padding:1px">
+                    <a href="{% url 'add_appointment' i.id %}"> <button class="btn btn-primary" style="height:34px;font-size:12px;margin:0;width:100%" onclick="return confirm('Are you sure?')">Add Appointment</button></a>
+                </div>
+                <div class="col-md-6" style="margin:0;padding:1px">
+                    <a href="{% url 'doctor_detail' i.id %}"><button class="btn btn-primary" style="font-size:13px;margin:0;width:100%">View Detail</button></a>
+                </div>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

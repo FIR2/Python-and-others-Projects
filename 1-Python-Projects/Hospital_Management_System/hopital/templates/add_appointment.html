@@ -1,0 +1,64 @@
+{% extends 'pat_nav.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:2%" align="center">Add My Appointment</h2><hr></div>
+<div class="container">
+<div class="container-fluid" style="">
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Doctor Name</label>
+      <input type="text" class="form-control" value="{{doc.sign.user.first_name}} {{doc.sign.user.last_name}}" name="d_name" id="inputEmail4" readonly>
+    </div>
+  </div>
+        <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Your Name</label>
+      <input type="text" class="form-control" name="name" value="{{pat.sign.user.first_name}} {{pat.sign.user.last_name}}" id="inputEmail4" readonly>
+    </div>
+  </div>
+        <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Your Email Address</label>
+      <input type="text" class="form-control" name="email" value="{{pat.sign.user.email}}" id="inputEmail4">
+    </div>
+  </div>
+
+
+ <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Your Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{pat.sign.mobile}}" name="contact">
+  </div>
+        </div>
+
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Address</label>
+      <input type="text" class="form-control" name="add" value="{{pat.address}}" id="inputPassword4">
+    </div>
+            <div class="form-group col-md-6">
+      <label for="inputPassword4">Disease</label>
+      <input type="text" class="form-control" name="dis" placeholder="Enter Your Disease" id="inputPassword4">
+    </div>
+  </div>
+        <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">Write your Description</label>
+        <textarea class="form-control" name="desc" id="inputPassword4"></textarea>
+    </div>
+  </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-bottom:5%;width:100%">Add Appointment</button>
+    </form></div>
+</div>
+{% if error %}
+<script>
+    alert('Appointment Added Successfully');
+    window.location = "{% url 'view_appointment' %}";
+</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'hr_nav.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:2%" align="center">Next Payment of <span style = "color : green">{{fee.appoint.pat.sign.user.username}}</span></h2><hr></div>
+
+<div class="container" style="">
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Patient Name</label>
+      <input type="text" class="form-control" value="{{fee.appoint.pat.sign.user.username}}" name="name" id="inputEmail4" readonly>
+    </div>
+  </div>
+
+{% ifnotequal fee.total None %}
+ <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Total</label>
+    <input type="number" class="form-control" id="total1" value="{{fee.total}}" name="total">
+  </div>
+     <div class="form-group col-md-6">
+      <label for="inputEmail4">Last Outstanding</label>
+      <input type="number" id="outstanding1" class="form-control" name="outstanding" value="{{fee.outstanding}}" readonly>
+    </div>
+        </div>
+        {% else %}
+        <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Total</label>
+    <input type="number" class="form-control" id="total" name="total"  onkeyup="calc(1,00000)">
+  </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Last Outstanding</label>
+      <input type="number" id="outstanding1" name="outstanding" class="form-control" value="{{fee.outstanding}}" readonly>
+    </div>
+        </div>
+        {% endifnotequal %}
+        <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Paid Amount</label>
+      <input type="number" class="form-control" name="payment" id="paid" onkeyup="calc()">
+    </div>
+  </div>
+        <button type="submit" class="btn btn-primary" style="margin-bottom:5%">update</button>
+    </form></div>
+
+{% if error %}
+<script>
+    alert('Update Successfully');
+    window.location = "{% url 'patient_accounting' %}";
+</script>
+{% endif %}
+
+{% endblock %}

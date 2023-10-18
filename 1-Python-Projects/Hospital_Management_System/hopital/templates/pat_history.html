@@ -1,0 +1,24 @@
+{% extends 'pat_nav.html' %}
+{% block body %}
+
+<center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:2%">
+    View My Prescription</h2></center><hr>
+<div class="container" style="margin-top:1%">
+        {% for i in presc %}
+    <div class="container" style="width:80%;margin-bottom:2%;padding:8px;background-color:lightgrey;border:1px solid black;border-radius:8px">
+        <h2 style="color:blue">{{i.date1}}</h2>
+        <p>Symptom : {{i.disease}}</p>
+        <p>Prescription : {{i.prescription}}</p>
+        <p>Doctor Name : {{i.doc.sign.user.username}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+
+<script>
+            var el_up = document.getElementById("GFG_UP");
+
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+</script>
+{% endblock %}

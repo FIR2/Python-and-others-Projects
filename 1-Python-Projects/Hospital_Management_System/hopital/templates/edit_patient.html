@@ -1,0 +1,95 @@
+{% extends 'res_nav.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:2%" align="center">Edit Patient</h2><hr></div>
+
+<div class="container" style="">
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">First Name</label>
+      <input type="text" class="form-control" value="{{pat.sign.user.first_name}}" name="fname" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Last Name</label>
+      <input type="text" class="form-control" name="lname" value="{{pat.sign.user.last_name}}" id="inputPassword4">
+    </div>
+  </div>
+        <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Email Address</label>
+      <input type="text" class="form-control" name="email" value="{{pat.sign.user.email}}" id="inputEmail4">
+    </div>
+  </div>
+
+ <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{pat.sign.mobile}}" name="contact">
+  </div>
+        </div>
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Image</label>
+      <input type="file" class="form-control" name="img" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <img src="{{pat.sign.image.url}}" style="width:100px;height:110px">
+    </div>
+  </div>
+
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Age</label>
+      <input type="text" class="form-control" value="{{pat.age}}" name="age" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Address</label>
+      <input type="text" class="form-control" name="add" value="{{pat.address}}" id="inputPassword4">
+    </div>
+  </div>
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Blood Group</label>
+      <input type="text" class="form-control" value="{{pat.b_group}}" name="group" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Case Number</label>
+      <input type="text" class="form-control" name="c_number" value="{{pat.c_number}}" id="inputPassword4">
+    </div>
+  </div>
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Gender</label><br>
+        <div style="border:1px solid lightgrey;padding:5px;border-radius:6px">
+      <div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" id="customRadioInline1" name="gen" class="custom-control-input" value="Male">
+  <label class="custom-control-label" for="customRadioInline1">Male</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" id="customRadioInline2" name="gen" class="custom-control-input" value="Female">
+  <label class="custom-control-label" for="customRadioInline2">Female</label>
+</div>
+            <div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" id="customRadioInline2" name="gen" class="custom-control-input" value="Other">
+  <label class="custom-control-label" for="customRadioInline2">Other</label>
+</div>
+        </div></div>
+        <div class="form-group col-md-6">
+      <label for="inputPassword4">Gender</label>
+      <input type="text" class="form-control" value="{{pat.gender}}" id="inputPassword4">
+    </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-bottom:5%">update</button>
+    </form></div>
+
+{% if error %}
+<script>
+    alert('Update Successfully');
+    window.location = "{% url 'view_rs_patient' %}";
+</script>
+{% endif %}
+
+{% endblock %}

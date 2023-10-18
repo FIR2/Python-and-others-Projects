@@ -1,0 +1,83 @@
+{% extends 'pat_nav.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">My Profile</h2><hr>
+
+<div  class="container-fluid" style="width:80%;margin-bottom:5%">
+    <hr><div class="row">
+        <div class="col-md-6">
+            <strong>Full Name:</strong>
+        </div>
+        <div class="col-md-6">
+            {{sign.user.first_name}} {{sign.user.last_name}}
+        </div>
+    </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>My Image:</strong>
+        </div>
+        <div class="col-md-6">
+            <img src="{{sign.image.url}}" style="width:100px;height:130px"></img>
+        </div></div><hr>
+     
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Email Id :</strong>
+        </div>
+        <div class="col-md-6">
+            {{sign.user.email}}
+        </div>
+    </div><hr>
+
+     <div class="row">
+        <div class="col-md-6">
+            <strong>Contact :</strong>
+        </div>
+        <div class="col-md-6">
+            {{sign.mobile}}
+        </div>
+     </div><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Age :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.age}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Gender :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.gender}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Address :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.address}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Blood Group :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.b_group}}
+        </div>
+     </div><hr>
+
+
+    <a href="{% url 'edit_profile' %}"><button class="btn btn-primary" style="width:100%;margin-bottom:5%">Edit Profile</button></a>
+
+    </div></div>
+</div>
+{% endblock %}

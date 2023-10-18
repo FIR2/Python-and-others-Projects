@@ -1,0 +1,89 @@
+{% extends 'hr_nav.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">Patient Detail</h2><hr>
+
+<div  class="container" style="width:80%;margin-bottom:5%">
+    <hr><div class="row">
+        <div class="col-md-6">
+            <strong>Full Name:</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.sign.user.first_name}} {{pat.sign.user.last_name}}
+        </div>
+    </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>My Image:</strong>
+        </div>
+        <div class="col-md-6">
+            <img src="{{pat.sign.image.url}}" style="width:100px;height:130px"></img>
+        </div></div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Email Id :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.sign.user.email}}
+        </div>
+    </div><hr>
+
+     <div class="row">
+        <div class="col-md-6">
+            <strong>Contact :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.sign.mobile}}
+        </div>
+     </div><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Age :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.age}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Gender :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.gender}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Address :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.address}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Blood Group :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.b_group}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Case Number :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pat.c_number}}
+        </div>
+     </div><hr>
+
+    </div></div>
+
+{% endblock %}

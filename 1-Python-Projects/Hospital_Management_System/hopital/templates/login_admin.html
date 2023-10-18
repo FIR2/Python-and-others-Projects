@@ -1,0 +1,52 @@
+{% extends 'navigations.html' %}
+{% block body %}
+{% load static %}
+
+{% if error == "pat" %}
+<script>
+    alert('logged in successfully');
+    window.location=('{% url 'admin_home' %}');
+</script>
+{% endif %}
+{% if error == "res" %}
+<script>
+    alert('logged in successfully');
+    window.location=('{% url 'res_home' %}');
+</script>
+{% endif %}
+{% if error  == "not" %}
+<script>
+    alert('Username & Password are not Matching');
+</script>
+{% endif %}
+{% if error == "pending" %}
+<script>
+    alert('Verification is pending, please try after some time');
+</script>
+{% endif %}
+{% if error == "reject" %}
+<script>
+    alert('Verification is Rejected,please fill correct Detail');
+</script>
+{% endif %}
+
+
+<center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E
+ ; font-weight : bold;margin-top:2%">HR and Receptionist Login Form</h2></center><hr>
+<div class="container" style="margin-top:1%">
+
+      <form method="post" action="">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="uname" placeholder="Enter Username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd">
+  </div>
+  <button type="submit" class="btn btn-primary" style="margin-top:2%">SUBMIT</button>
+
+      </form>
+</div>
+{% endblock %}

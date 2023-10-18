@@ -1,0 +1,69 @@
+{% include 'doc_nav.html' %}
+{% load static %}
+
+<!--datatable cdn start-->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
+<!-- datatable cdn end-->
+
+
+{% block body %}
+
+<center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:2%">
+    Between Dates Booking Reports</h2></center><hr>
+<div class="container" style="margin-top:1%">
+</div>
+ <div class="container">
+     <h4 align="center" style="color:blue">Report from {{fd}} to {{td}}</h4>
+<table class="table table-hover" id="example">
+  <thead>
+  <tr>
+    <th>Sr. No</th>
+    <th>Patient_Name</th>
+    <th>Disease</th>
+      <th>Prescription_Given</th>
+      <th>Prescription_Date</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+   <tbody>
+
+{% for i in prescription %}
+  <tr>
+      <td>{{forloop.counter}}</td>
+    <td>{{i.pat.sign.user.first_name}}</td>
+    <td>{{i.disease}}</td>
+      <td>{{i.prescription}}</td>
+    <td>{{i.date1}}</td>
+
+    <td><a href="{% url 'delete_prescription' i.id %}"><button class="btn btn-success">Delete</button></a></td>
+  </tr>
+   {% endfor %}
+
+    </tbody>
+</table>
+
+ </div>
+
+
+{% endblock %}

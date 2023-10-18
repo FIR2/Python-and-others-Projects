@@ -1,0 +1,47 @@
+{% extends 'hr_nav.html' %}
+{% block body %}
+
+<center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:2%">
+    View {{doc.sign.user.username}}'s Attendance</h2></center><hr>
+<div class="container" style="margin-top:1%">
+        <a href="{% url 'add_attendance' %}"><button class="btn btn-primary" style="width:100%">Add Attendance & Salary</button></a>
+</div>
+ <div class="container">
+<table class="table table-hover" id="example">
+  <thead>
+  <tr>
+    <th>Sr. No</th>
+    <th>Month</th>
+    <th>Year</th>
+    <th>Attendance</th>
+    <th>Salary</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+   <tbody>
+
+{% for i in attend %}
+  <tr>
+      <td>{{forloop.counter}}</td>
+    <td>{{i.month}}</td>
+    <td>{{i.year}}</td>
+    <td>{{i.attend}}</td>
+    <td>{{i.salary}}</td>
+      <td>
+          <a href="{% url 'delete_attendance' i.id %}"><button class="btn btn-success" onclick="return confirm('Are you sure?')">Delete</button></a></td>
+    </td>
+  </tr>
+   {% endfor %}
+
+    </tbody>
+</table>
+
+ </div>
+
+<script>
+            var el_up = document.getElementById("GFG_UP");
+
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+</script>
+{% endblock %}

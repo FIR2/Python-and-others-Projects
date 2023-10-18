@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+</head>
+<style>
+    th,td{
+    text-align:left;
+    font-size:25px;
+    }
+    lable{
+font-size:40px;
+    }
+</style>
+<body style="background:blue">
+    <lable style = "font-family : 'Monotype Corsiva' ; color : green ; font-weight : bold;margin-top:3%" align="center"># Invoice Page</lable><hr>
+
+<div class="container">
+    <h1 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:3%" align="center">View Doctor Detail</h1><hr>
+
+<div style="width:900px">
+    <table>
+        <tr>
+
+        <tr>
+        <th>Full Name</th>
+        <td>{{pro.sign.user.first_name}} {{pro.sign.user.last_name}}</td>
+        </tr>
+
+        <tr>
+        <th>Email Id</th>
+        <td>{{pro.sign.user.email}}</td>
+        </tr>
+
+        <tr>
+        <th>Contact</th>
+        <td>{{pro.sign.mobile}}</td>
+        </tr>
+
+        <tr>
+        <th>Gender</th>
+        <td>{{pro.gender}}</td>
+        </tr>
+
+        <tr>
+        <th>Age</th>
+        <td>{{pro.age}}</td>
+        </tr>
+
+        <tr>
+        <th>Address</th>
+        <td>{{pro.address}}</td>
+        </tr>
+
+        <tr>
+        <th>Specialist</th>
+        <td>{{pro.specialist}}</td>
+        </tr>
+
+        <tr>
+        <th>Qualification</th>
+        <td>{{pro.qualification}}</td>
+        </tr>
+    </table>
+</div><hr>
+    <div class="container">
+    <h1 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;" align="center">Attendance & Salary Detail</h1><hr>
+<div style="width:800px">
+    <table>
+        <tr>
+        <th>Last Date</th>
+        <td>{{pro.last_date}}</td>
+        </tr>
+
+        <tr>
+        <th>Total Attendance</th>
+        <td>{{pro.last_attend}}</td>
+        </tr>
+
+        <tr style="font-size:60px">
+        <th>Salary</th>
+        <td>{{pro.salary}}</td>
+        </tr>
+
+    </table>
+    </div>
+        <lable style = "font-family : 'Monotype Corsiva' ; color : green ; font-weight : bold;margin-top:6%" align="right">Salary      :    <span style="color:red">{{pro.salary}} /-</span></lable><hr>
+
+</div>
+</div>
+
+</body>
+</html>

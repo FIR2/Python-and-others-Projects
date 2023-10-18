@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+</head>
+<style>
+    th,td{
+    text-align:left;
+    font-size:25px;
+    }
+    lable{
+font-size:40px;
+    }
+</style>
+<body style="background:blue">
+    <lable style = "font-family : 'Monotype Corsiva' ; color : green ; font-weight : bold;margin-top:3%" align="center"># Invoice Page</lable><hr>
+
+<div class="container">
+    <h1 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:3%" align="center">View Patient Detail</h1><hr>
+
+<div style="width:900px">
+    <table>
+        <tr>
+
+        <tr>
+        <th>Full Name</th>
+        <td>{{pro.pat.sign.user.first_name}} {{pro.pat.sign.user.last_name}}</td>
+        </tr>
+
+        <tr>
+        <th>Email Id</th>
+        <td>{{pro.pat.sign.user.email}}</td>
+        </tr>
+
+        <tr>
+        <th>Gender</th>
+        <td>{{pro.pat.gender}}</td>
+        </tr>
+
+        <tr>
+        <th>Blood group</th>
+        <td>{{pro.pat.b_group}}</td>
+        </tr>
+
+        <tr>
+        <th>Age</th>
+        <td>{{pro.pat.age}}</td>
+        </tr>
+
+        <tr>
+        <th>Contact</th>
+        <td>{{pro.pat.sign.mobile}}</td>
+        </tr>
+
+        <tr>
+        <th>Address</th>
+        <td>{{pro.pat.address}}</td>
+        </tr>
+    </table>
+</div><hr>
+    <div class="container">
+    <h1 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;" align="center">Payment Detail</h1><hr>
+<div style="width:800px">
+    <table>
+        <tr>
+        <th>Last Date</th>
+        <td>{{fee.last_date}}</td>
+        </tr>
+
+        <tr>
+        <th>Total Payment</th>
+        <td>{{fee.total}}</td>
+        </tr>
+
+        <tr>
+        <th>Last Paid</th>
+        <td>{{fee.paid}}</td>
+        </tr>
+
+        <tr>
+        <th>Outstanding</th>
+        <td>{{fee.outstanding}}</td>
+        </tr>
+
+    </table>
+    </div>
+        <lable style = "font-family : 'Monotype Corsiva' ; color : green ; font-weight : bold;margin-top:6%" align="right">Outstanding      :    <span style="color:red">{{fee.outstanding}} /-</span></lable><hr>
+
+</div>
+</div>
+
+</body>
+</html>

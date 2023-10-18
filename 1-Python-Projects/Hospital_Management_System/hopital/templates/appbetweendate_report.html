@@ -1,0 +1,24 @@
+{% extends 'doc_nav.html' %}
+{% load static %}
+{% block body %}
+<center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:2%">
+    Appointment Between Dates Report :</h2></center><hr>
+<div class="container">
+<form method="post" action="">
+    {% csrf_token %}
+  <div class="form-group">
+    <label >From Date</label>
+    <input type="date" class="form-control" name="fromdate">
+
+      <label >To Date</label>
+    <input type="date" class="form-control" name="todate">
+  </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+</div>
+
+
+{% endblock %}

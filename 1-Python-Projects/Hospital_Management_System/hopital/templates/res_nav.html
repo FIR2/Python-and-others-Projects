@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+
+   <script src=https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src=https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src=https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src=https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
+
+    <style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  margin-top: 60px;
+  width: 298px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown1 button */
+.sidenav a, .dropdown1-btn {
+  padding: 16px 18px 16px 26px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown1-btn:hover {
+  color: white;
+  background-color: #00021a;
+  border-radius:8px;
+}
+
+/* Main content */
+.main {
+  margin-left: 299px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 10px 10px;
+}
+
+/* Add an active class to the active dropdown1 button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* dropdown1 container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown1 content */
+.dropdown1-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+body {margin:0;font-family:Arial}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown1 {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown1 .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown1-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown{
+float:right;
+}
+.topnav-right {
+  float: right;
+}
+.dropdown-menu-right {
+    right: 0;
+    left:auto;
+}
+</style>
+</head>
+<body>
+<div class="container" style="font-size:80px;padding:-30px">
+        <img src="{% static 'images/hospital11.jpg' %}" style="width:10%;height:-200px" alt=" ">
+
+                        <span style="color:red">H</span>ealth
+						<span style="color:red">C</span>are
+						<span style="color:green">E</span>-
+            <span style="color:green">M</span>edicare
+
+</div>
+
+<div style="margin:0px;padding:0">
+    <div style="margin-left:0;background-color:#00021a">
+    <nav class="navbar navbar-expand-lg navbar-light" style="margin:0px;background-color:#00021a">
+  <a class="navbar-brand" href="{% url 'res_home' %}" style="color:white;margin-left:12%"><i class="fa fa-home" style="margin-right:4px"></i> Home </a>
+  <a class="navbar-brand" href="{% url 'create_appointment' %}" style="color:white;margin-left:2%"><i class="fa fa-plus" style="margin-right:4px"></i> Add Appointment</a>
+        <span class="nav-item dropdown" style="margin-left:2%;color:white;font-family:'Times New Roman'">
+
+        <a class="nav-link dropdown-toggle navbar-brand" style="color:white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-sign-in" style="margin-right:4px"></i> Appointment
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'new_appointment' %}">New Appointment</a>
+          <a class="dropdown-item" href="{% url 'done_appointment' %}">Confirmed Appointment</a>
+          <a class="dropdown-item" href="{% url 'all_appointment' %}">All Appointment</a>
+                  </div></span>
+        <span class="nav-item dropdown" style="margin-left:2%;color:white;font-family:'Times New Roman'">
+
+        <a class="nav-link dropdown-toggle navbar-brand" style="color:white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-users" style="margin-right:4px"></i> Patient
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
+          <a class="dropdown-item" href="{% url 'view_rs_patient' %}">View Patient</a>
+                  </div></span>
+
+  <button class="navbar-toggler" style="background-color:white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span style="color:white" class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse nav justify-content-end"  id="navbarNavDropdown" style="margin-right:4%">
+  <li class="nav-item dropdown" style="color:white">
+        <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user" style="margin-right:6px"> {{request.user.username}}</i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'Res_Change_Password' %}"><i class="fa fa-sign-out"></i> Change password</a>
+          <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
+        </div>
+      </li>
+  </div></nav></div>
+    {% block body %}
+    {% endblock %}
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
